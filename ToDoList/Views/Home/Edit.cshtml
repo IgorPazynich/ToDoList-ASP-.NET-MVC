@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link type="text/css" rel="stylesheet" href="../../Content/Site.css" />
+    <title>Редактирование</title>
+</head>
+<body>
+    <div>
+        <h1>Редактирование задачи</h1>
+        <form method="post" action="">
+            <table>
+                <tr>
+                    <td><p> Название задачи </p></td>
+                    <td><input type="text" class="form-control" name="Name" value="@ViewBag.Goal.Name" required /> </td>
+                </tr>
+                <tr>
+                    <td><p>Описание задачи </p></td>
+                    <td><p><textarea class="form-control" name="Note" cols="35" rows="6"> @ViewBag.Goal.Note </textarea></p></td>
+                </tr>
+                <tr>
+                    <td><p>Дата/время выполнения задачи </p></td>
+                    <td><p><input class="form-control" type="datetime-local" name="DateTimeToDo" value="@if (ViewBag.Goal.DateTimeToDo != null) {@ViewBag.Goal.DateTimeToDo.ToString("yyyy-MM-dd" + "T" + "HH:mm")}" /></p></td>
+                </tr>
+                <tr>
+                    <td align="right"><button type="submit" class="btn btn-success">Применить</button></td>
+                    <td><a href="/" class="btn btn-default">Отмена</a></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
