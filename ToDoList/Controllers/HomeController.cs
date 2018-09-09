@@ -1,59 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using ToDoList.Logic;
 using ToDoList.Models;
 
 namespace ToDoList.Controllers
 {
     public class HomeController : Controller
     {
-        ToDoListContext db = new ToDoListContext();
-
         public ActionResult Index()
         {
-            IEnumerable<Goal> goals = db.Goals;
-            ViewBag.Goals = goals;
+            ViewBag.Goals = WorkWithDB.GetGoals();
             return View();
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            ViewBag.Goal = db.Goals.Find(id);
-            return View();
+            ViewBag.Goal = WorkWithDB.FindGoal(id);
+            ViewBag.Title = "Редактирование задачи";
+            return View("GoalView");
         }
 
         [HttpPost]
         public ActionResult Edit(Goal goalEdited)
         {
-            Goal goal = db.Goals.Find(goalEdited.Id);
-            goal.Name = goalEdited.Name;
-            goal.Note = goalEdited.Note;
-            goal.DateTimeToDo = goalEdited.DateTimeToDo;
-            db.SaveChanges();
+            WorkWithDB.EditGoal(goalEdited);
             return Redirect("/");
         }
 
         [HttpGet]
         public ActionResult Add()
         {
-            return View();
+            ViewBag.Goal = new Goal();
+            ViewBag.Title = "Добавление задачи";
+            return View("GoalView");
         }
 
         [HttpPost]
         public ActionResult Add(Goal goal)
         {
-            db.Goals.Add(goal);
-            db.SaveChanges();
+            WorkWithDB.AddGoal(goal);
             return Redirect("/");
         }
 
         public ActionResult Remove(int id)
         {
-            db.Goals.Remove(db.Goals.Find(id));
-            db.SaveChanges();
+            WorkWithDB.RemoveGoal(id);
             return Redirect("/");
         }
     }

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace ToDoList.Models
 {
@@ -10,6 +8,7 @@ namespace ToDoList.Models
         // ID задачи
         public int Id { get; set; }
         // Название задачи
+        [Required]
         public string Name { get; set; }
         // Описание задачи
         public string Note { get; set; }

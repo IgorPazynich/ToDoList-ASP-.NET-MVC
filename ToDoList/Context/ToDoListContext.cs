@@ -1,8 +1,8 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using ToDoList.Models;
 
 
-namespace ToDoList.Models
+namespace ToDoList.Context
 {
     public class ToDoListContext: DbContext
     {

@@ -157,9 +157,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\WorkWithDB.cs" />
     <Compile Include="Models\Goal.cs" />
-    <Compile Include="Models\ToDoListContext.cs" />
-    <Compile Include="Models\ToDoListInitializer.cs" />
+    <Compile Include="Context\ToDoListContext.cs" />
+    <Compile Include="Context\ToDoListInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,8 +200,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Edit.cshtml" />
-    <Content Include="Views\Home\Add.cshtml" />
+    <Content Include="Views\Home\GoalView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
